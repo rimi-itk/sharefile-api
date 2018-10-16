@@ -182,6 +182,21 @@ class Client
     }
 
     /**
+     * Get children.
+     *
+     * @param string $itemId Item id
+     * @param array  $query  OData query (cf. https://api.sharefile.com/rest/index/odata.aspx)
+     *
+     * @return array
+     */
+    public function getChildren(string $itemId, array $query = []):array
+    {
+        $parameters = http_build_query($query);
+
+        return $this->get("Items({$itemId})/Children?{$parameters}");
+    }
+
+    /**
      * Get Folder/File using path.
      *
      * @param string $path   Path
