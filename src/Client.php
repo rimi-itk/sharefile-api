@@ -182,6 +182,16 @@ class Client
     }
 
     /**
+     * Get metadata for an item.
+     *
+     * @param string $itemId
+     * @return mixed
+     */
+    public function getItemMetadataList(string $itemId) {
+        return $this->get("Items({$itemId})/Metadata");
+    }
+
+    /**
      * Get Folder/File using path.
      *
      * @param string $path   Path
