@@ -548,6 +548,22 @@ class Client
         }
     }
 
+    public function search(array $query, string $itemId = null): array
+    {
+        $query += [
+
+        ];
+        $url = 'Items/Search'.(null === $itemId ? '' : '('.$itemId.')')
+            .'?'.http_build_query($query);
+
+        return $this->get($url);
+    }
+
+    public function advancedSimpleSearch(array $query): array
+    {
+        return $this->post('Items/AdvancedSimpleSearch', $query);
+    }
+
     /**
      * Build API uri.
      *
