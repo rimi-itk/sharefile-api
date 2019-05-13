@@ -551,10 +551,10 @@ class Client
     public function search(array $query, string $itemId = null): array
     {
         $query += [
-
         ];
-        $url = 'Items/Search'.(null === $itemId ? '' : '('.$itemId.')')
-            .'?'.http_build_query($query);
+
+        $url = 'Items'.(null === $itemId ? '' : '('.$itemId.')').'/Search'
+            .'?'.http_build_query(array_map('http_build_query', $query));
 
         return $this->get($url);
     }
